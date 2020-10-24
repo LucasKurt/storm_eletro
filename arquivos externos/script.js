@@ -14,11 +14,6 @@ function selecionar(categoria){
 function aumentaImg(imagem) {
     let img = imagem;
     img.style.width = "90%";
-    // if(img.style.width == "45%"){
-    //     img.style.width = "90%";
-    // }//  else {
-    //      img.style.width = "45%";
-    //  }
 }
 
 function diminuiImg(imagem){
