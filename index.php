@@ -2,16 +2,12 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="./arquivos externos/estilo.css" type="text/css">
+        <link rel="stylesheet" href="./arquivos externos/CSS/estilo.css" type="text/css">
         <title>Full Stack Eletro</title>
     </head>
     <body>   
-        <nav><!-- Inicio do menu -->
-            <a href="index.html"><img src="./img/logo.jpeg" alt="Logo"></a>
-            <a href="produtos.html">Produtos</a>
-            <a href="lojas.html">Nossas Lojas</a>
-            <a href="contato.html">Contatos</a>
-        </nav><!-- Fim do menu -->
+        <!-- menu -->
+        <?php require_once('./arquivos externos/HTML/nav.html') ?>
         <main>
             <h2>Seja bem vindo(a)!</h2>
             <p>Aqui em nossa loja, programadores tem desconto nos produtos para sua casa!</p>
