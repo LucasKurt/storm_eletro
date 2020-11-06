@@ -1,106 +1,33 @@
-html{
+.w-10{
+    width: 10%;
+}
+
+.w-45{
+    width: 45%;
+}
+
+ html{
     height: 100%;
 }
 
 body{
     min-height:100%;
     position:relative;
-    margin: 0;
-    padding: 0;
-}
-
-nav{
-    background-color: red;
-}
-
-nav a{
-    color: black;
-    text-decoration: none;
-    padding: 5px;
-}
-
-nav img{
-    width: 7.5%;
 }
 
 main{
-    margin: 1%;
     padding-bottom: 80px;
 }
 
 footer{
     position: absolute;
-    width: 100%;
     bottom: 0;
-    text-align: center;
-}
-
-footer h4{
-    margin: 0;
-    color: red;
 }
 
 footer img{
-    height: 40px;
-}
-
-div{
-    vertical-align: bottom;
-}
-
-div.principal{
-    font-size: 0;
-}
-
-div.container{
-    display: inline-block;
-    width: 80%;
-}
-
-aside{
-    display: inline-block;
-    width: 20%;
-    vertical-align: top;
-    font-size: small;   
-}
-
-aside li{
-    cursor: pointer;
-}
-
-aside ul{
-    margin: 0%;
-}
-
-aside h3{
-    margin-top: 0;
-    font-size: larger;
-    font-weight: bold;
+    height: 4em;
 }
 
 div.produto{
-    display: inline-block;
-    width: 20%;
-    font-size: small;
-    text-align: center;
-    margin: 0 2.5% 0;
-}
-
-div.produto img{
-    width: 45%;
-    cursor: pointer;
-}
-
-div.produto p{
-    margin: 0%;
-    padding: 0%;
-}
-
-div.produto p.preçoAntigo{
-    text-decoration: line-through;
-}
-
-div.produto p.preçoAtual{
-    color: red;
-    font-size: medium;
+    display: flex;
 }

@@ -1,12 +1,13 @@
 function selecionar(categoria){
     let produtos = document.getElementsByClassName("produto");
+    //console.log(produtos[1].classList)
     for (let i = 0; i < produtos.length; i++) {
         if(categoria == `produto`){
-            produtos[i].style.display="inline-block";
-        } else if(categoria != produtos[i].classList[1]){
+            produtos[i].style.display="flex";
+        } else if(categoria != produtos[i].classList[6]){
             produtos[i].style.display="none";
         } else  {
-            produtos[i].style.display="inline-block";
+            produtos[i].style.display="flex";
         }   
     }  
 }
