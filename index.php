@@ -9,9 +9,14 @@
     <body>   
         <!-- menu -->
         <?php require_once('./arquivos externos/HTML/nav.html') ?>
-        <main class="container-fluid">
-            <h2>Seja bem vindo(a)!</h2>
-            <p>Aqui em nossa loja, programadores tem desconto nos produtos para sua casa!</p>
+        <main class="container-fluid mb-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Seja bem vindo(a)!</h1>
+                <p class="lead">Aqui em nossa loja, programadores tem desconto nos produtos para sua casa!</p>
+                <hr class="my-4">
+                <p>Venha conhecer nosso produtos!!!!!!</p>
+                <a class="btn btn-primary btn-lg" href="produtos.php" role="button">Saiba mais</a>
+            </div>
         </main>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
