@@ -1,13 +1,6 @@
  .w-5{
     width: 5%;
 }
-.h-95{
-    height: 95%;
-}
-
-.cursor-zoom-in{
-    cursor: zoom-in;
-}
 
 .list-item{
     cursor: pointer;
