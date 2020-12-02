@@ -2,8 +2,9 @@
 
 require "Connection.php";
 
-class Produto {
+class Product {
     public $id;
+    public $cat_id;
     public $categoria;
     public $img;
     public $descricao;

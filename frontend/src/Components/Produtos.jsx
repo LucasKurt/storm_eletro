@@ -2,6 +2,7 @@ import React from "react";
 
 const Produtos = () =>{
     const [produtos,setProdutos] = React.useState([]);
+    const [filtroId,setFiltro] = React.useState([0]);
 
     React.useEffect(async () => {
         const url = "http://localhost/Storm-Eletro/backend/";
@@ -16,59 +17,44 @@ const Produtos = () =>{
         return obj;
     });
 
-    const categoriasString = [...new Set(categoriasPoluidas.map(JSON.stringify))];
-    
-    const categorias = categoriasString.map(JSON.parse);
+    const categorias = [...new Set(categoriasPoluidas.map(JSON.stringify))].map(JSON.parse);
 
     function shadow(event) {
         const img = event.target;
         if (img.classList[6] == "border-0" && img.classList[7] != "shadow-lg") {
-            img.className += " shadow-lg";
-        }     
+            img.classList.toggle('shadow-lg',true);
+        } else if (img.parentElement.classList[6] == "border-0" && img.parentElement.classList[7] != "shadow-lg") {
+            img.parentElement.classList.toggle('shadow-lg',true);
+        } else if (img.parentElement.parentElement.classList[6] == "border-0" && img.parentElement.parentElement.classList[7] != "shadow-lg") {
+            img.parentElement.parentElement.classList.toggle('shadow-lg',true);
+        }    
     }
 
     function shadowless(event) {
         const img = event.target;
-        console.log(img.className)
         if (img.classList[7] == "shadow-lg") {
-            img.className = `${img.classList[0]} col-sm-12 col-lg-4 card align-items-center p-5 border-0`
-            
+            img.classList.toggle('shadow-lg',false);
+        } else if (img.parentElement.classList[7] == "shadow-lg") {
+            img.parentElement.classList.toggle('shadow-lg',false);
+        } else if (img.parentElement.parentElement.classList[7] == "shadow-lg") {
+            img.parentElement.parentElement.classList.toggle('shadow-lg',false);
         } 
          
-    }
-
-    function handleClick(event) {
-        if (event.target.style.transform == "scale(1)") {
-            event.target.style.transform = "scale(0.8)"
-        } 
-        else {
-            event.target.style.transform = "scale(1)"
-        }
     }
 
     function totalProdutos(cat_id){
         let count = 0;
         for (const i of produtos) {
-            if(i.cat_id == cat_id){
+            if(i.cat_id == cat_id) {
                 ++count;
             }
         }
-        return count
+        return count;
     }
 
     function filtro(event){
-        let lista = event.target.id
-        console.log(lista)
-        let items = document.getElementsByClassName("card");
-        for (const card of items) {
-            if (lista == 0 ) {
-                card.style.display="flex";
-            } else if(lista != card.classList[0]) {
-                card.style.display="none";
-            } else {
-                card.style.display="flex";
-            }
-        } 
+        let lista = event.target.id;
+        setFiltro(lista)
     }
     
     return(
@@ -95,16 +81,29 @@ const Produtos = () =>{
             </aside>
             <div className="container row mx-auto">
                 {produtos.map((produto) => {
-                    return(
-                        <div key={produto.id} className={produto.cat_id + " col-sm-12 col-lg-4 card align-items-center p-5 border-0"} onMouseEnter={shadow} onMouseLeave={shadowless}>
-                            <div className="card-img-top div-height vh-100 d-flex align-items-center"> <img className="h-75 mx-auto" src={produto.img} alt={produto.categoria}/> </div>
-                            <div className="card-body">
-                                <p className="card-text"> {produto.descricao} </p>
-                                <del className="card-title preçoAntigo">R$ {produto.preco_antigo}</del>
-                                <p className="card-title preçoAtual text-danger font-weight-bold text-monospace">R$ {produto.preco}</p>
+                    if (filtroId == 0) {
+                        return(
+                            <div key={produto.id} className={produto.cat_id + " col-sm-12 col-lg-4 card align-items-center p-5 border-0"} onMouseEnter={shadow} onMouseLeave={shadowless}>
+                                <div className="card-img-top div-height vh-100 d-flex align-items-center"> <img className="h-75 mx-auto" src={produto.img} alt={produto.categoria}/> </div>
+                                <div className="card-body">
+                                    <p className="card-text"> {produto.descricao} </p>
+                                    <del className="card-title preçoAntigo">R$ {produto.preco_antigo}</del>
+                                    <p className="card-title preçoAtual text-danger font-weight-bold text-monospace">R$ {produto.preco}</p>
+                                </div>
                             </div>
-                        </div>
-                    )
+                        )
+                    } else if(produto.cat_id == filtroId){
+                        return(
+                            <div key={produto.id} className={produto.cat_id + " col-sm-12 col-lg-4 card align-items-center p-5 border-0"} onMouseEnter={shadow} onMouseLeave={shadowless}>
+                                <div className="card-img-top div-height vh-100 d-flex align-items-center"> <img className="h-75 mx-auto" src={produto.img} alt={produto.categoria}/> </div>
+                                <div className="card-body">
+                                    <p className="card-text"> {produto.descricao} </p>
+                                    <del className="card-title preçoAntigo">R$ {produto.preco_antigo}</del>
+                                    <p className="card-title preçoAtual text-danger font-weight-bold text-monospace">R$ {produto.preco}</p>
+                                </div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
                 

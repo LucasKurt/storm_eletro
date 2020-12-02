@@ -59,19 +59,6 @@ CREATE TABLE `comentarios` (
   `data` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `comentarios`
---
-
-INSERT INTO `comentarios` (`id`, `nome`, `msg`, `data`) VALUES
-(1, 'Lucas Corte Galdino de Freitas', 'Olá Mundo!!!', '2020-11-02 23:24:06'),
-(2, 'Lucas Corte Galdino de Freitas', 'Olá Mundo!!!', '2020-11-02 23:26:44'),
-(3, 'Lucas Corte Galdino de Freitas', 'Olá Mundo!!!', '2020-11-02 23:28:07'),
-(4, 'Joao', 'Quanto custa essa bagaça ?', '2020-11-02 23:43:34'),
-(5, '', '', '2020-11-02 23:43:43'),
-(6, 'Lucas Corte Galdino de Freitas', 'dsrfadf', '2020-11-02 23:46:51'),
-(7, 'Audrey Nogueira', 'Quando vai ter mais produtos em estoque ?', '2020-11-06 03:46:22'),
-(8, 'Lucas Corte Galdino de Freitas', 'Esta na Hora de mudar de nome', '2020-11-25 22:20:38');
 
 -- --------------------------------------------------------
 

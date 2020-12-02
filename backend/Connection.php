@@ -1,7 +1,7 @@
 <?php
 
 class Connection {
-    public static function getDB() {
+    public static function getDb() {
         $conn = new PDO(
             "mysql:host=localhost;dbname=storm_eletro;charset=utf8",
             "root",
