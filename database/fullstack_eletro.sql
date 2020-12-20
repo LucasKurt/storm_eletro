@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Nov-2020 às 03:55
+-- Tempo de geração: 20-Dez-2020 às 03:11
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.11
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `fullstack_eletro`
 --
+CREATE DATABASE IF NOT EXISTS `fullstack_eletro` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `fullstack_eletro`;
 
 -- --------------------------------------------------------
 
@@ -44,7 +46,9 @@ INSERT INTO `comentarios` (`id`, `nome`, `msg`, `data`) VALUES
 (3, 'Lucas Corte Galdino de Freitas', 'Olá Mundo!!!', '2020-11-02 23:28:07'),
 (4, 'Joao', 'Quanto custa essa bagaça ?', '2020-11-02 23:43:34'),
 (5, '', '', '2020-11-02 23:43:43'),
-(6, 'Lucas Corte Galdino de Freitas', 'dsrfadf', '2020-11-02 23:46:51');
+(6, 'Lucas Corte Galdino de Freitas', 'dsrfadf', '2020-11-02 23:46:51'),
+(7, 'Audrey Nogueira', 'Quando vai ter mais produtos em estoque ?', '2020-11-06 03:46:22'),
+(8, 'Lucas Corte Galdino de Freitas', 'Esta na Hora de mudar de nome', '2020-11-25 22:20:38');
 
 -- --------------------------------------------------------
 
@@ -94,7 +98,8 @@ INSERT INTO `produtos` (`id`, `categoria`, `descricao`, `preco`, `img`, `preco_a
 (9, 'Lava Louças', 'Lava Louças Eletrolux com 10 Serviços, 10 Programas de Lavagem e Painel Blue Touch', 2799.9, './img/produtos/lava louças1.jpeg', 3599),
 (10, 'Lava Louças', 'Lava Louças Compacta Branca 127V Brastemp', 1730.61, './img/produtos/lava louças2.jpeg', 1970.5),
 (11, 'Maquina de Lavar', 'Lavadora de Roupas Philco Inverter 12kg, 10 Programas de Lavagem e Painel Blue Touch', 2179.9, './img/produtos/maquina de lavar1.jpeg', 2399.9),
-(12, 'Maquina de Lavar', 'Lavadora de Roupas Brastemp 11kg com Turbo Performace Branca', 1214.1, './img/produtos/maquina de lavar2.jpeg', 1699);
+(12, 'Maquina de Lavar', 'Lavadora de Roupas Brastemp 11kg com Turbo Performace Branca', 1214.1, './img/produtos/maquina de lavar2.jpeg', 1699),
+(13, 'Purificador de água', 'Purificador de água Electrolux Pe11B Branco Bivolt com painel touch', 499, 'https://eletrum.vteximg.com.br/arquivos/ids/165187-400-400/purificador-de-agua-electrolux-branco-bivolt-pe11b-jarra.png?v=636740907456370000', 700.84);
 
 --
 -- Índices para tabelas despejadas
@@ -127,7 +132,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
@@ -139,7 +144,7 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
