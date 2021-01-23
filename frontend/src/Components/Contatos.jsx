@@ -2,15 +2,18 @@ import React from "react";
 
 const Contatos = () => {
     const [comentarios,setComentarios] = React.useState([]);
+    const [imput,setImput] = React.useState({nome:'',mensagem:''});
     const [render,setRender] = React.useState(false)
     const [msg,setMsg] = React.useState(false);
     const [show,setShow] = React.useState(false);
     const [btn,setBtn] = React.useState('Ver Mensagens');
 
-    React.useEffect(async () =>{
-        const url = "http://localhost/Storm-Eletro/backend/comments.php";
-        const response = await fetch(url);
-        setComentarios(await response.json());
+    React.useEffect(() =>{
+        async function fetchData(){
+            const url = "http://localhost/Storm-Eletro/backend/comments.php";
+            const response = await fetch(url);
+            setComentarios(await response.json());
+        }fetchData()
     },[render])
 
     function registerComment(event) {
@@ -41,6 +44,10 @@ const Contatos = () => {
         }
     }
 
+    async function clear() {
+        //setImput({...imput,nome: '',mensagem: ''})
+    }
+
     return(
         <main className="container-fluid">
             <h2>Contato</h2>
@@ -60,10 +67,10 @@ const Contatos = () => {
             <br/><br/>
             <form onSubmit={registerComment}>
                 <label htmlFor="nome">Nome:</label>
-                <input className="form-control" type="text" id="name" name="nome" placeholder="Digite aqui seu nome."/><br/>
+                <input className="form-control" type="text" id="name" name="nome" value={imput.nome} placeholder="Digite aqui seu nome." onChange={event => setImput({...imput,nome: event.target.value})}/><br/>
                 <label htmlFor="msg">Mensagem:</label><br/>
-                <textarea className="form-control" name="msg" id="msg" cols="90" rows="5" placeholder="Deixe aqui sua mensagem"></textarea><br/>
-                <button className="btn btn-outline-secondary btn-lg" type="submit">Enviar</button>
+                <textarea className="form-control" name="msg" id="msg" cols="90" rows="5" value={imput.mensagem} placeholder="Deixe aqui sua mensagem" onChange={event => setImput({...imput,mensagem: event.target.value})}></textarea><br/>
+                <button className="btn btn-outline-secondary btn-lg" type="submit" onClick={clear}>Enviar</button>
                 <button className="btn btn-outline-secondary btn-lg ml-5" type="button" onClick={showTable}>{btn}</button>
             </form>
 

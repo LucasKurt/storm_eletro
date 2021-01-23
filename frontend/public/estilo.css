@@ -1,5 +1,9 @@
- .w-5{
+.w-5{
     width: 5%;
+}
+
+.w-90{
+    width: 90%;
 }
 
 .list-item{
@@ -8,6 +12,15 @@
 
 .div-height{
     height: 200px;
+}
+
+.t-none{
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.estrela{
+    height: 1rem;
 }
 
 html{
