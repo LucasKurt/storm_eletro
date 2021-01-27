@@ -101,7 +101,7 @@ const Produtos = () =>{
                                     </div>
                                 </Link>
                             )
-                        } else if(produto.cat_id === filtroId){
+                        } else if(produto.cat_id.toString() === filtroId){
                             return(
                                 <Link key={produto.id} className={produto.cat_id + " col-sm-12 col-lg-4 card align-items-center p-5 t-none border-0"} to={() => "/Produto/" + produto.descricao} onMouseEnter={shadow} onMouseLeave={shadowless}>
                                     <div className="card-img-top div-height vh-100 d-flex align-items-center"> <img className="h-75 mx-auto" src={img} alt={produto.categoria}/></div>

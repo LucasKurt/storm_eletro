@@ -8,7 +8,7 @@ const Sacola = () =>{
 
     React.useEffect(() => {
         async function fetchData() {
-            const url = "http://localhost/Storm-Eletro/backend/";
+            const url = "http://localhost:3333/produtos";
             const response = await fetch(url);
             setProdutos(await response.json());
         } fetchData();
