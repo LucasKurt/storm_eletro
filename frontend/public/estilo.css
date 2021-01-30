@@ -6,6 +6,10 @@
     width: 90%;
 }
 
+.hpx-50{
+    height: 100px;
+}
+
 .list-item{
     cursor: pointer;
 }
@@ -33,7 +37,7 @@ body{
 }
 
 main{
-    padding-bottom: 150px;
+    padding-bottom: 16px;
 }
 
 footer{

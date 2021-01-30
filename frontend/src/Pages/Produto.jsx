@@ -1,11 +1,14 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 
 const Produto = () => {
     let { id } = useParams();
 
     const [produtos,setProdutos] = React.useState([]);
-    let sacola = JSON.parse(localStorage.getItem('sacola'));
+    const dispatch = useDispatch();
+    const qtd = useSelector((state) => state.qtdReducer);
+    const sacola = useSelector((state) => state.sacolaReducer)
 
     React.useEffect(() => {
         async function fetchData() {
@@ -36,22 +39,21 @@ const Produto = () => {
     
     function add() {
         let validation = true;
-        const obj = {};
-        obj['id'] = produto["id"];
-        obj['qtd'] = 1;
-        if (sacola === null){
-            sacola = [];
-            sacola.push(obj);   
-        } else {
-            sacola.map(element => {
-                if(element.id === obj.id) {
-                    element.qtd++;
-                    validation = false;
-                }
-            })
-            validation && sacola.push(obj);  
+        for (let item of sacola) {
+            if (item.id === produto["id"]){
+                validation = false;
+            }
         }
-        localStorage.setItem('sacola', JSON.stringify(sacola));
+        if (validation) {
+            dispatch({type: "PUSH",value: 1})
+            localStorage.setItem("qtd", JSON.stringify(qtd))
+            const obj = {
+                id: produto["id"],
+                qtd: qtd[qtd.length - 1]
+            }
+            dispatch({type: "ADICIONAR",value: obj})
+            localStorage.setItem("sacola", JSON.stringify(sacola));
+        }
     }
     
     return(
@@ -88,10 +90,10 @@ const Produto = () => {
                 </div>
                 <div className="col-5">
                     <p><img className="estrela" src="/img/estrelas/3 estrelas.jpg" alt="3 estrelas"/> <Link className="text-body" to="#">Avalie o produto</Link></p>
-                    <p className="text-muted mx-0">de R$ {produto["preco_antigo"]}</p>
-                    <h4 className="mx-0"><small>por R$ </small>{produto["preco"]} <small>à vista <span className="text-success">(5% de desconto)</span></small></h4>
-                    <p className="mx-0">ou R$ {(produto["preco"]/0.95).toFixed(2)} em 12x de R$ {(produto["preco"]/(0.95*12)).toFixed(2)} sem juros</p>
-                    <Link type="button" className="btn btn-success btn-block mt-5" to="/Sacola" onClick={add}>Adicionar à sacola</Link>
+                    <p className="text-muted mx-0">de R$ {(produto["preco_antigo"]/1).toFixed(2).toString().replace(".", ",")}</p>
+                    <h4 className="mx-0"><small>por R$ </small>{(produto["preco"]/1).toFixed(2).toString().replace(".", ",")}<small> à vista <span className="text-success">(5% de desconto)</span></small></h4>
+                    <p className="mx-0">ou R$ {(produto["preco"]/0.95).toFixed(2).toString().replace(".", ",")} em 12x de R$ {(produto["preco"]/(0.95*12)).toFixed(2).toString().replace(".", ",")} sem juros</p>
+                    <Link type="button" className="btn btn-success btn-block mt-5" to="/sacola" onClick={add}>Adicionar à sacola</Link>
                 </div>
             </div>   
         </main>

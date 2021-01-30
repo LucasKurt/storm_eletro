@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from "./Footer";
-import Nav from "./Nav";
+import Footer from "./Components/Footer";
+import Nav from "./Components/Nav";
 
 const App = () => {
   return (

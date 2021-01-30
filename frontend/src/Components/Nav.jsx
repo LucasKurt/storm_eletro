@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import Home from "./Home";
-import Produtos from "./Produtos";
-import Produto from "./Produto";
-import NossasLojas from "./NossasLojas";
-import Contatos from "./Contatos";
-import Sacola from "./Sacola";
-import Erro404 from "./Erro404";
+import Home from "../Pages/Home";
+import Produtos from "../Pages/Produtos";
+import Produto from "../Pages/Produto";
+import NossasLojas from "../Pages/NossasLojas";
+import Contatos from "../Pages/Contatos";
+import Sacola from "../Pages/Sacola";
+import Erro404 from "../Pages/Erro404";
 
 const Nav = () => {
     return (
