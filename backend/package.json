@@ -7,7 +7,7 @@
     "start": "nodemon ./src/server.js"
   },
   "keywords": [],
-  "author": "Guilherme Avelino",
+  "author": "Lucas Corte",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
