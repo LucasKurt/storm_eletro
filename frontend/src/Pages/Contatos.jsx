@@ -98,7 +98,7 @@ const Contatos = () => {
                         return(
                             <tr key={comentario.id}>
                                 <td>{comentario.nome}</td>
-                                <td>{comentario.databr}</td>
+                                <td>{comentario.data}</td>
                                 <td>{comentario.msg}</td>
                             </tr>
                         )

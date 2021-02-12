@@ -1,35 +1,34 @@
-const connection = require('../config/connection');
+require('../config/mongoConnection')
 
-class Comentario {
-    constructor() {
-        this.id;
-        this.nome;
-        this.msg;
-        this.data;
-    }
+const { Schema, model } = require('mongoose');
 
-    getAll(req, res) {
-        connection.query("SELECT *,date_format(data,'%d/%m/%Y as %H:%ihs') AS databr FROM comentarios ORDER BY databr DESC", (error, result) => {
-            if (error) {
-                res.send(error);
-            } else {
-                res.json(result);
-            }
-        });
-    }
-
-    registrarComentario(req, res) {
-        connection.query(
-            `INSERT INTO comentarios (nome, msg) values ('${this.nome}', '${this.msg}')`,
-            (error, result) => { 
-                if (error) {
-                    res.send(error)
-                } else {
-                    res.status(201).json(result)
-                }
-            }
-        );
-    }
+function dataAtualFormatada() {
+	let data = new Date();
+        let dia  = data.getDate().toString();
+        let diaF = (dia.length == 1) ? '0' + dia : dia
+        let mes  = (data.getMonth()+1).toString(); //+1 pois no getMonth() Janeiro começa com zero.
+        let mesF = (mes.length == 1) ? '0' + mes : mes
+        let anoF = data.getFullYear();
+        let hora = data.getHours();
+        let minuto = data.getMinutes();       
+	return diaF + "/" + mesF + "/" + anoF + " às " + hora + ":" + minuto;
 }
 
-module.exports = new Comentario;
+const ComentarioSchema = new Schema({
+    nome: {
+        type: String
+    },
+    msg: {
+        type: String
+    },       
+    
+    data: {
+        type: String,
+        default: dataAtualFormatada()
+
+    }     
+})
+
+const ComentarioModel = model("comentarios",ComentarioSchema)
+
+module.exports = ComentarioModel

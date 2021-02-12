@@ -1,16 +1,16 @@
 const comentario = require('../models/Comentario');
 
 class ComentariosController {
-    indexAction(req, res) {
-        comentario.getAll(req, res)
+    async indexAction(req, res) {
+        const resposta = await comentario.find().sort({_id: -1})
+        res.json(resposta)
     }
 
-    registrarComentarioAction(req, res) {
+    async registrarComentarioAction(req, res) {
         const { nome, msg } = req.body;
 
-        comentario.nome = nome;
-        comentario.msg = msg;
-        comentario.registrarComentario(req, res);
+        let resposta = await comentario.create({nome,msg});
+        res.json(resposta)
     }
 }
 
