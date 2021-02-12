@@ -8,7 +8,7 @@ const Produtos = () =>{
 
     React.useEffect(() => {
         async function fetchData() {
-            const url = "http://localhost/Storm-Eletro/backend/";
+            const url = "http://localhost:3333/produtos";
             const response = await fetch(url);
             setProdutos(await response.json());
         } fetchData();
@@ -76,8 +76,8 @@ const Produtos = () =>{
                                     img={img}
                                     categoria={produto.categoria}
                                     descricao={produto.descricao}
-                                    precoAntigo={produto.preco_antigo}
-                                    preco={produto.preco}
+                                    precoAntigo={(produto.preco_antigo/1).toFixed(2).toString().replace(".", ",")}
+                                    preco={(produto.preco/1).toFixed(2).toString().replace(".", ",")}
                                 />
                             )
                         } else if(produto.cat_id.toString() === filtroId){

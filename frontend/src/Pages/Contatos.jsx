@@ -18,7 +18,7 @@ const Contatos = () => {
 
     function registerComment(event) {
         event.preventDefault();
-
+        
         //let formData = new FormData(event.target);
         let formData = {
             nome: imput.nome,

@@ -30,8 +30,8 @@ const CardItem = (props) => {
             <div className="card-img-top div-height vh-100 d-flex align-items-center"> <img className="h-75 mx-auto" src={props.img} alt={props.categoria}/></div>
             <div className="card-body">
                 <p className="card-text"> {props.descricao} </p>
-                <del className="card-title">R$ {props.precoAntigo.replace(".", ",")}</del>
-                <p className="card-title preçoAtual text-danger font-weight-bold text-monospace">R$ {props.preco.replace(".", ",")}</p>
+                <del className="card-title">R$ {props.precoAntigo}</del>
+                <p className="card-title preçoAtual text-danger font-weight-bold text-monospace">R$ {props.preco}</p>
             </div>
         </Link>
     )
