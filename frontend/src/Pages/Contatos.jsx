@@ -18,7 +18,7 @@ const Contatos = () => {
 
     function registerComment(event) {
         event.preventDefault();
-
+        
         //let formData = new FormData(event.target);
         let formData = {
             nome: imput.nome,
@@ -29,7 +29,7 @@ const Contatos = () => {
 
         fetch(url,{
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify(formData)
         }).then(response => response.json()).then(dados => {
             setRender(!render)
